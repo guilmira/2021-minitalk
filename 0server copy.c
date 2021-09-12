@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   0server.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/11 13:54:26 by guilmira          #+#    #+#             */
-/*   Updated: 2021/09/12 16:25:43 by guilmira         ###   ########.fr       */
+/*   Created: 2021/09/11 13:47:35 by guilmira          #+#    #+#             */
+/*   Updated: 2021/09/11 16:57:15 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "minitalk.h"
 
-#include <stdio.h>
-#include <unistd.h>
-#include <signal.h>
+//tienes dos señales, usar biario.
 
-void	ft_server(void);
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putnbr_fd(int n, int fd);
+/* if (SIGUSR1)
+{
+	conviertela en 0
+}
 
-#endif
+if (SIGUSR2)
+{
+	conviertela en 1
+} */
+
+void ft_server(void)
+{
+	pid_t signal;
+	int signal_conver;
+	signal = getpid();
+	signal_conver = (int) signal;
+	printf("%i\n", signal_conver);
+	while (1)
+	{
+		printf("durmiendo\n");
+		sleep(2);
+	}
+}
