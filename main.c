@@ -7,6 +7,11 @@ void handler(int sig)
 
 int main(void)
 {
+	char *line;
+
+	get_next_line(0, &line);
+	ft_printf("%s\n", line);
+
 	signal(SIGIO, &handler);
 	ft_server();
 }

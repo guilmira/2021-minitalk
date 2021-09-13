@@ -6,18 +6,18 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 15:55:27 by guilmira          #+#    #+#             */
-/*   Updated: 2021/09/12 16:25:27 by guilmira         ###   ########.fr       */
+/*   Updated: 2021/09/13 17:38:58 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-
+/*
 /** PURPOSE : outputs lenght of the string.
  * 1. Advances string while increasing counter. */
 static size_t	ft_strlen(const char *s)
 {
 	size_t	i;
-
+≤≤≤
 	i = 0;
 	while (s[i])
 		i++;
@@ -56,4 +56,4 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putnbr_fd(x / 10, fd);
 		ft_putchar_fd('0' + (x % 10), fd);
 	}
-}
+} */
