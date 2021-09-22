@@ -6,8 +6,17 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 13:47:38 by guilmira          #+#    #+#             */
-/*   Updated: 2021/09/11 14:04:14 by guilmira         ###   ########.fr       */
+/*   Updated: 2021/09/22 12:40:13 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+
+void ft_client(void)
+{
+	char *line;
+
+	get_next_line(0, &line);
+	ft_printf("%s\n", line);
+	//free(line);
+}

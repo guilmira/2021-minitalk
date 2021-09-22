@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 13:47:35 by guilmira          #+#    #+#             */
-/*   Updated: 2021/09/13 17:38:21 by guilmira         ###   ########.fr       */
+/*   Updated: 2021/09/22 12:41:05 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,10 @@ void ft_server(void)
 	int	signal;
 
 	signal = getpid();
-	/* ft_putstr_fd("PID: ", 1); */
-	printf("%i\n", signal);
-	/* ft_putnbr_fd(signal, 1);
-	ft_putstr_fd("\n", 1); */
+	ft_printf("PID: %i\n", signal);
 	while (1)
 	{
-		printf("durmiendo\n");
+		ft_printf("durmiendo\n");
 		sleep(2);
 	}
 }
