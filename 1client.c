@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 13:47:38 by guilmira          #+#    #+#             */
-/*   Updated: 2021/09/22 16:49:46 by guilmira         ###   ########.fr       */
+/*   Updated: 2021/09/23 13:55:14 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,104 +15,71 @@
 /** PURPOSE : Output error, close the program. */
 void	shutdown(void)
 {
-	ft_printf("Error\n");
-	//ft_putstr_fd("Error\n", 1);
+	ft_putstr_fd("Error\n", 1);
 	exit(1);
 }
 
-/** PURPOSE : converts string into integer equivalent.
- * 1. Skip spaces, tabs and similar.
- * 2. Check sign.
- * 3. Take the string digit and add it to global number (multiplied by 10); */
-static int	ft_aatoi(const char *str)
+/** PURPOSE : converts integer into its binary string equivalent.
+ * 						--ALLOCATES MEMORY--
+ * 1. Allocate enough memory to contain enough digits. Note how it allocates
+ * extra space in order to be able to finish the string with the '\0'
+ * and also in case the number is negative and needs a '-' char.
+ * 2. Write binary digits as a string using recurssive funct-writer. */
+char	*char_tobin(char z)
 {
-	unsigned int	n;
-	unsigned int	i;
-	int				sign;
+	int	ascii;
 
-	sign = 1;
-	i = 0;
-	n = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || \
-	str[i] == '\r' || str[i] == '\f' || str[i] == '\v')
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i++] == '-')
-			sign = -1;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		n = (str[i] - '0') + n * 10;
-		if (n > 2147483647 && sign == 1)
-			return (-1);
-		else if (n > 2147483648 && sign == -1)
-			return (0);
-		i++;
-	}
-	return (((int) n * sign));
+	ascii = (int) z;
+	return (ft_tobinary(ascii));
 }
 
-/** PURPOSE : counts digits of an int (iterative)
- * Base might be binary, decimal, hexadecimal... */
-int	ft_count_digits_base(int n, int base)
+void	send_binary_signal(char *binary, int pid)
 {
-	int	digits;
+	int	i;
 
-	digits = 1;
-	n /= base;
-	while (n)
+	i = -1;
+	while (binary[++i])
 	{
-		digits++;
-		n /= base;
+		if (binary[i] == '1')
+			kill(pid, SIGUSR1);
+		else
+
+			kill(pid, SIGUSR2);
+		sleep(2);
 	}
-	return (digits);
+
 }
 
-/** PURPOSE : */
-int	binary_writer(int n, char *ptr)
+#bitwie operations in c
+
+/** PURPOSE : process string to binary. Returns allocated binary string number.
+ * 						--ALLOCATES MEMORY-- */
+char	*string_mgmt(char *str)
 {
-	static int	i;
+	char	*string;
+	char	*binary;
 
-	if (n / 2)
-		binary_writer(n / 2, ptr);
-	else
-	{
-		i = 0;
-		if (n < 0)
-		{
-			ptr[0] = '-';
-			i++;
-		}
-	}
-	ptr[i++] = '0' + n % 2;
-	ptr[i] = '\0';
+	string = ft_strdup(str);
+	binary = char_tobin(string[0]);
+	printf("%s\n",binary);
+	free(string);
+	return (binary);
 }
 
-/** PURPOSE : converts integer into binary string equivalent.
- * 1. Check sign.
- * 2.  */
-char *int_tobinary(int n)
-{
-	char	*ptr;
-	/* if (n == -2147483648)
-		return (ft_strdup("-2147483648")); */
-	ptr = ft_calloc(ft_count_digits_base(n, 2), sizeof(char));
-	binary_writer(n, ptr);
-
-	return (ptr);
-}
-
+/** PURPOSE : Client program.
+ * 1. Argument 1 is Process-ID.
+ * 2. Argument 2 is the string.
+ * Remember using process status (ps u) to check ID */
 int main(int argc, char *argv[])
 {
+	char	*binary;
 
-	if (!argc)
+	if (argc != 3)
 		shutdown();
-
-	kill(ft_aatoi(argv[1]), 2); //cambiara cunado unficique lib y pf
-	int_tobinary((int)argv[2][0]);
+	binary = string_mgmt(argv[2]);
+	send_binary_signal(binary, ft_atoi(argv[1]));
+	free(binary);
 }
-
 
 /* char *line;
 

@@ -6,7 +6,7 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/12 15:28:36 by guilmira          #+#    #+#              #
-#    Updated: 2021/09/23 11:43:15 by guilmira         ###   ########.fr        #
+#    Updated: 2021/09/23 12:04:43 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ LIB			= $(LIB_DIR)/libft.a
 
 INCLUDES	= -I ./0includes -I ./get_next_line/0includes -I ./ft_printf/0includes -I ./ft_printf/libft_submodule/0includes
 #--------------------------------------------------------------------------------------------------------------SOURCES
-SRCS		= main.c 0server.c
+SRCS		= 0server.c
 SRCS2		= 1client.c
 OBJS		= $(SRCS:.c=.o)
 OBJS2		= $(SRCS2:.c=.o)
@@ -60,6 +60,9 @@ test: $(GNL) $(PF) $(LIB)
 
 ex: $(NAME) $(NAME2)
 	./$(NAME)
+PARAM = PID 2
+lance:
+	./$(NAME) $(PARAM)
 
 clean:
 	@rm -rf $(OBJS_DIR)/*.o
