@@ -6,7 +6,7 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/12 15:28:36 by guilmira          #+#    #+#              #
-#    Updated: 2021/09/23 12:04:43 by guilmira         ###   ########.fr        #
+#    Updated: 2021/09/26 14:07:33 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,9 @@
 NAME	= server
 NAME2	= client
 CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror
-#-g3 -fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror #-g3 -fsanitize=address
 
-#atencion al _di-cl-r
+#atencion al _di-cl-r TAMBIEN ATENCION AL PF
 #--------------------------------------------------------------------------------------------------------------LIBS
 GNL_DIR		= ./get_next_line
 GNL			= $(GNL_DIR)/gnl.a
@@ -48,30 +47,21 @@ $(PF):
 $(NAME): $(OBJS) $(GNL) $(PF)
 	@$(CC) $(FLAGS) $(OBJS) $(INCLUDES) $(GNL) $(PF) $(LIB) -o $(NAME)
 	@mv $(OBJS) ./0objects
-	@echo "Compiled '$(NAME)'."
+	@echo "'$(NAME)' is now compiled."
 
 $(NAME2): $(OBJS2) $(GNL) $(PF) $(LIB)
 	@$(CC) $(FLAGS) $(OBJS2) $(INCLUDES) $(GNL) $(PF) $(LIB) -o $(NAME2)
 	@mv $(OBJS2) ./0objects
-	@echo "Compiled '$(NAME2)'."
-
-test: $(GNL) $(PF) $(LIB)
-	@$(CC) $(FLAGS) mainn.c $(INCLUDES) $(GNL) $(PF) $(LIB) -o test_guil && ./test_guil
+	@echo "'$(NAME2)' is now compiled."
 
 ex: $(NAME) $(NAME2)
 	./$(NAME)
-PARAM = PID 2
-lance:
-	./$(NAME) $(PARAM)
 
 clean:
 	@rm -rf $(OBJS_DIR)/*.o
 	@rm -rf $(OBJS_DIR)/*.o
 	make clean -C $(GNL_DIR)
 	make clean -C $(PF_DIR)
-
-ey:
-	rm -rf $(OBJS_DIR)/$(OBJS)
 
 fclean: clean
 	rm -rf $(NAME)
