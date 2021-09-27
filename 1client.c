@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 13:47:38 by guilmira          #+#    #+#             */
-/*   Updated: 2021/09/26 13:49:16 by guilmira         ###   ########.fr       */
+/*   Updated: 2021/09/26 15:26:31 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,17 @@ static void	send_binary_signal(char letter, int pid)
  * Remember using process status (ps u) to check ID */
 int	main(int argc, char *argv[])
 {
+	int		i;
+	int		pid;
+	char	*string;
+
 	if (argc != 3)
 		ft_shutdown();
-	send_binary_signal(argv[2][0], ft_atoi(argv[1]));
+	string = ft_strdup(argv[2]);
+	pid = ft_atoi(argv[1]);
+	i = -1;
+	while (string[++i])
+		send_binary_signal(string[i], pid);
+	send_binary_signal('\n', pid);
+	free(string);
 }
-
-/* char *line;
-
-	get_next_line(0, &line);
-	ft_printf("%s\n", line);
-	free(line); */

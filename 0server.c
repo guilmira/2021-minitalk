@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 13:47:35 by guilmira          #+#    #+#             */
-/*   Updated: 2021/09/26 14:04:57 by guilmira         ###   ########.fr       */
+/*   Updated: 2021/09/27 10:33:21 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,15 @@ t_message	*g_binary;
 void	ft_handler(int sig)
 {
 	g_binary->bit_counter++;
+	if (sig == 30)
+		g_binary->letter = g_binary->letter | g_binary->bit_modifier;
+	g_binary->bit_modifier = g_binary->bit_modifier >> 1;
 	if (!(g_binary->bit_counter % 8))
 	{
 		g_binary->bit_modifier = EIGHTH_BIT;
 		ft_printf("%c", g_binary->letter);
 		g_binary->letter = 0;
 	}
-	if (sig == 30)
-		g_binary->letter = g_binary->letter | g_binary->bit_modifier;
-	g_binary->bit_modifier = g_binary->bit_modifier >> 1;
-	usleep(50);
 }
 
 /** PURPOSE : Runs the server.
@@ -75,5 +74,8 @@ int	main(void)
 	struct_init(g_binary);
 	signal(SIGUSR1, &ft_handler);
 	signal(SIGUSR2, &ft_handler);
+	close (STDIN_OUTFILENO);
 	ft_server();
+	free(g_binary);
+	system("leaks server");
 }
