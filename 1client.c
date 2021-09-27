@@ -6,11 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 13:47:38 by guilmira          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/09/27 14:25:25 by guilmira         ###   ########.fr       */
-=======
-/*   Updated: 2021/09/27 13:40:22 by guilmira         ###   ########.fr       */
->>>>>>> c7cad1c132fbed4dd8479a671438525fd19e500c
+/*   Updated: 2021/09/27 14:31:52 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +41,7 @@ static void	send_binary_signal(char letter, int pid)
  * 1. Control number of arguments.
  * 2. Control PID.
  * 3. Control string. */
-static void	mt_parser(int argc, char *argv[])
+/* static void	mt_parser(int argc, char *argv[])
 {
 	int	i;
 
