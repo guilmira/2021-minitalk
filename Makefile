@@ -6,7 +6,7 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/12 15:28:36 by guilmira          #+#    #+#              #
-#    Updated: 2021/09/27 10:46:26 by guilmira         ###   ########.fr        #
+#    Updated: 2021/09/27 13:41:25 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,6 @@ NAME2	= client
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror #-g -fsanitize=address
 
-#atencion al _di-cl-r TAMBIEN ATENCION AL PF
 #--------------------------------------------------------------------------------------------------------------LIBS
 GNL_DIR		= ./get_next_line
 GNL			= $(GNL_DIR)/gnl.a
