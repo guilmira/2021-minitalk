@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 13:47:38 by guilmira          #+#    #+#             */
-/*   Updated: 2021/09/27 11:18:42 by guilmira         ###   ########.fr       */
+/*   Updated: 2021/09/27 14:25:25 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	send_binary_signal(char letter, int pid)
  * 1. Control number of arguments.
  * 2. Control PID.
  * 3. Control string. */
-void	mt_parser(int argc, char *argv[])
+/* void	mt_parser(int argc, char *argv[])
 {
 	int	i;
 
@@ -64,7 +64,7 @@ void	mt_parser(int argc, char *argv[])
 	}
 	if (!argv[2][0])
 		ft_printf("Sending empty string.\n");
-}
+} */
 
 /** PURPOSE : Client program.
  * 1. Argument 1 is Process-ID.
@@ -76,7 +76,9 @@ int	main(int argc, char *argv[])
 	int		pid;
 	char	*string;
 
-	mt_parser(argc, argv);
+	if (argc != 3)
+		ft_shutdown();
+	//mt_parser(argc, argv);
 	string = ft_strdup(argv[2]);
 	pid = ft_atoi(argv[1]);
 	i = -1;
