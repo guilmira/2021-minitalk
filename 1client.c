@@ -6,13 +6,13 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 13:47:38 by guilmira          #+#    #+#             */
-/*   Updated: 2021/09/27 11:18:42 by guilmira         ###   ########.fr       */
+/*   Updated: 2021/09/27 13:40:22 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-/** PURPOSE : Singal sender using bitwise operations.
+/** PURPOSE : Signal sender using bitwise operations.
  * EIGHTH_BIT = 128, in binary is equivalent to 		10000000.
  * Example: Let us take for example the letter h 		(01101000).
  * If the operator '&' is used :  'letter h' & 128		(-0- ... 0000000)
@@ -41,7 +41,7 @@ static void	send_binary_signal(char letter, int pid)
  * 1. Control number of arguments.
  * 2. Control PID.
  * 3. Control string. */
-void	mt_parser(int argc, char *argv[])
+static void	mt_parser(int argc, char *argv[])
 {
 	int	i;
 
