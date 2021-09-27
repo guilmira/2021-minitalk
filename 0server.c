@@ -6,16 +6,21 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 13:47:35 by guilmira          #+#    #+#             */
-/*   Updated: 2021/09/27 10:33:21 by guilmira         ###   ########.fr       */
+/*   Updated: 2021/09/27 11:31:51 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-/** Global variable is declared to effitiently
+/** Global variable is declared to efficiently
  * use structure on function handler. This allows
  * for a single signal handler instead of two. */
 t_message	*g_binary;
+
+int	talk_back(char letter)
+{
+	kill();
+}
 
 /** PURPOSE : Signal handler.
  * 1. Increases bit counter.
@@ -27,6 +32,8 @@ t_message	*g_binary;
  * 3. Move the bit modifier one position to the right. */
 void	ft_handler(int sig)
 {
+	t_bool	result;
+
 	g_binary->bit_counter++;
 	if (sig == 30)
 		g_binary->letter = g_binary->letter | g_binary->bit_modifier;
@@ -34,14 +41,16 @@ void	ft_handler(int sig)
 	if (!(g_binary->bit_counter % 8))
 	{
 		g_binary->bit_modifier = EIGHTH_BIT;
-		ft_printf("%c", g_binary->letter);
+		result = talk_back(g_binary->letter)
+		if (result)
+			ft_printf("%c", g_binary->letter);
 		g_binary->letter = 0;
 	}
 }
 
 /** PURPOSE : Runs the server.
  * 1. Obtain P-ID and display.
- * 2. Awaits. Loop runs every 2 seconds */
+ * 2. Awaits. Loop runs indefinetly */
 static void	ft_server(void)
 {
 	int	signal;
@@ -49,9 +58,7 @@ static void	ft_server(void)
 	signal = getpid();
 	ft_printf("PID: %i\n", signal);
 	while (1)
-	{
-		sleep(10);
-	}
+		;
 }
 
 /** PURPOSE : Init struct. */
@@ -72,10 +79,8 @@ int	main(void)
 	if (!g_binary)
 		ft_shutdown();
 	struct_init(g_binary);
-	signal(SIGUSR1, &ft_handler);
-	signal(SIGUSR2, &ft_handler);
-	close (STDIN_OUTFILENO);
+	signal(ONE, &ft_handler);
+	signal(ZERO, &ft_handler);
 	ft_server();
 	free(g_binary);
-	system("leaks server");
 }

@@ -6,7 +6,7 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/12 15:28:36 by guilmira          #+#    #+#              #
-#    Updated: 2021/09/26 15:33:11 by guilmira         ###   ########.fr        #
+#    Updated: 2021/09/27 10:46:26 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ OBJS		= $(SRCS:.c=.o)
 OBJS2		= $(SRCS2:.c=.o)
 OBJS_DIR	= ./0objects
 #--------------------------------------------------------------------------------------------------------------RULES
-all: gnl ft_printf $(NAME)
+all: gnl ft_printf $(NAME) $(NAME2)
 
 gnl:
 	@make -C $(GNL_DIR)
@@ -56,17 +56,19 @@ $(NAME2): $(OBJS2) $(GNL) $(PF) $(LIB)
 ex: $(NAME) $(NAME2)
 	./$(NAME)
 
+bonus: all
+
 clean:
-	@rm -rf $(OBJS_DIR)/*.o
-	@rm -rf $(OBJS_DIR)/*.o
+	@rm -rf $(OBJS_DIR)/$(OBJS)
+	@rm -rf $(OBJS_DIR)/$(OBJS2)
 	make clean -C $(GNL_DIR)
 	make clean -C $(PF_DIR)
 
 fclean: clean
 	rm -rf $(NAME)
 	rm -rf $(NAME2)
-	make fclean -C $(GNL_DIR)
-	make fclean -C $(PF_DIR)
+	@make fclean -C $(GNL_DIR)
+	@make fclean -C $(PF_DIR)
 
 re: fclean all
 

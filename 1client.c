@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 13:47:38 by guilmira          #+#    #+#             */
-/*   Updated: 2021/09/26 15:26:31 by guilmira         ###   ########.fr       */
+/*   Updated: 2021/09/27 11:18:42 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,35 @@ static void	send_binary_signal(char letter, int pid)
 	}
 }
 
+/** PURPOSE : Simple parser function
+ * 1. Control number of arguments.
+ * 2. Control PID.
+ * 3. Control string. */
+void	mt_parser(int argc, char *argv[])
+{
+	int	i;
+
+	if (argc != 3)
+	{
+		ft_printf("Invalid argument number. \
+		Introduce the PID follwed by the message. \
+		./client [PID] [string] \n");
+		ft_shutdown();
+	}
+	i = -1;
+	while (argv[1][++i])
+	{
+		if (!ft_isdigit(argv[1][i]))
+		{
+			ft_printf("PID must be a number. \
+			./client [PID] [string] \n");
+			ft_shutdown();
+		}
+	}
+	if (!argv[2][0])
+		ft_printf("Sending empty string.\n");
+}
+
 /** PURPOSE : Client program.
  * 1. Argument 1 is Process-ID.
  * 2. Argument 2 is the string.
@@ -47,8 +76,7 @@ int	main(int argc, char *argv[])
 	int		pid;
 	char	*string;
 
-	if (argc != 3)
-		ft_shutdown();
+	mt_parser(argc, argv);
 	string = ft_strdup(argv[2]);
 	pid = ft_atoi(argv[1]);
 	i = -1;
