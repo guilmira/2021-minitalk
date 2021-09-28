@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 13:47:35 by guilmira          #+#    #+#             */
-/*   Updated: 2021/09/27 14:31:10 by guilmira         ###   ########.fr       */
+/*   Updated: 2021/09/28 07:46:20 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static void	ft_server(void)
 
 	signal = getpid();
 	ft_printf("PID: %i\n", signal);
+	ft_printf("--Awaiting message of client--\n");
 	while (1)
 		;
 }
