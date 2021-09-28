@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 13:54:26 by guilmira          #+#    #+#             */
-/*   Updated: 2021/09/28 09:36:22 by guilmira         ###   ########.fr       */
+/*   Updated: 2021/09/28 13:23:35 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define MINITALK_H
 
 # include <stdio.h>
-# include <unistd.h>
 # include <signal.h>
 # include "libft.h"
 # define ONE SIGUSR1
