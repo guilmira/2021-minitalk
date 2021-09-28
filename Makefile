@@ -6,16 +6,15 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/12 15:28:36 by guilmira          #+#    #+#              #
-#    Updated: 2021/09/28 09:49:27 by guilmira         ###   ########.fr        #
+#    Updated: 2021/09/28 12:26:47 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #--------------------------------------------------------------------------------------------------------------COMPILER
-NAME	= server
-NAME2	= client
-CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror #-g -fsanitize=address
-
+NAME		= server
+NAME2		= client
+CC			= gcc
+CFLAGS		= -Wall -Wextra -Werror #-g -fsanitize=address
 #--------------------------------------------------------------------------------------------------------------LIBS
 LIB_DIR		= libft_submodule
 LIB			= $(LIB_DIR)/libft.a
@@ -25,7 +24,6 @@ SRCS		= 0server.c
 SRCS2		= 1client.c
 OBJS		= $(SRCS:.c=.o)
 OBJS2		= $(SRCS2:.c=.o)
-OBJS_DIR	= ./0objects
 #--------------------------------------------------------------------------------------------------------------RULES
 all: $(LIB) $(NAME) $(NAME2)
 
@@ -42,8 +40,6 @@ $(NAME): $(OBJS) $(LIB)
 $(NAME2): $(OBJS2) $(LIB)
 	$(CC) $(CFLAGS) $(OBJS2) $(INCLUDES) $(LIB) -o $(NAME2)
 	@echo "'$(NAME2)' is now compiled."
-
-bonus: all
 
 clean:
 	@rm -rf $(OBJS) $(OBJS2)
