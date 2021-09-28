@@ -6,7 +6,7 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/12 15:28:36 by guilmira          #+#    #+#              #
-#    Updated: 2021/09/27 14:32:18 by guilmira         ###   ########.fr        #
+#    Updated: 2021/09/28 07:58:43 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ OBJS		= $(SRCS:.c=.o)
 OBJS2		= $(SRCS2:.c=.o)
 OBJS_DIR	= ./0objects
 #--------------------------------------------------------------------------------------------------------------RULES
-all: ft_printf $(NAME) $(NAME2)
+all: $(PF) $(NAME) $(NAME2)
 
 $(PF):
 	@make -C $(PF_DIR)
@@ -47,19 +47,16 @@ $(NAME2): $(OBJS2) $(GNL) $(PF) $(LIB)
 	@mv $(OBJS2) ./0objects
 	@echo "'$(NAME2)' is now compiled."
 
-ex: $(NAME) $(NAME2)
-	./$(NAME)
-
 bonus: all
 
 clean:
 	@rm -rf $(OBJS_DIR)/$(OBJS)
 	@rm -rf $(OBJS_DIR)/$(OBJS2)
-	make clean -C $(PF_DIR)
+	@make clean -C $(PF_DIR)
 
 fclean: clean
-	rm -rf $(NAME)
-	rm -rf $(NAME2)
+	@rm -rf $(NAME)
+	@rm -rf $(NAME2)
 	@make fclean -C $(PF_DIR)
 
 re: fclean all
