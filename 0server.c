@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 13:47:35 by guilmira          #+#    #+#             */
-/*   Updated: 2021/09/28 07:56:14 by guilmira         ###   ########.fr       */
+/*   Updated: 2021/09/28 09:51:27 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_handler(int sig)
 	if (!(g_binary->bit_counter % 8))
 	{
 		g_binary->bit_modifier = EIGHTH_BIT;
-		ft_printf("%c", g_binary->letter);
+		ft_putchar_fd(g_binary->letter, 1);
 		g_binary->letter = 0;
 	}
 }
@@ -47,8 +47,9 @@ static void	ft_server(void)
 	int	signal;
 
 	signal = getpid();
-	ft_printf("PID: %i\n", signal);
-	ft_printf("--Awaiting message of client--\n");
+	ft_putstr_fd("PID: ", 1);
+	ft_putnbr_fd(signal, 1);
+	ft_putstr_fd("\n--Awaiting message of client--\n", 1);
 	while (1)
 		;
 }
