@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 13:47:35 by guilmira          #+#    #+#             */
-/*   Updated: 2021/09/28 09:51:27 by guilmira         ###   ########.fr       */
+/*   Updated: 2021/11/16 13:40:50 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ t_message	*g_binary;
  * 1. Increases bit counter.
  * 2. Checks whether the counter is divisible by 8. If so, reinit bit.
  * 2. If signal 30 (SIGUSR1) is sent, increase one bit in letter. If not
- * then don´t do anthing. This meanss that when SIGUSR2 is recieved, the
- * only thing that the function does is increae the bit counter as well as
+ * then don´t do anthing. This means that when SIGUSR2 is recieved, the
+ * only thing that the function does is increase the bit counter as well as
  * move by one position to the left the bit modifier.
  * 3. Move the bit modifier one position to the right. */
 void	ft_handler(int sig)
