@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 13:47:35 by guilmira          #+#    #+#             */
-/*   Updated: 2021/11/16 13:40:50 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/04/10 11:56:43 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	main(void)
 {
 	g_binary = ft_calloc(1, sizeof(*g_binary));
 	if (!g_binary)
-		ft_shutdown();
+		ft_shut("Memory allocation error\n");
 	struct_init(g_binary);
 	signal(SIGUSR1, &ft_handler);
 	signal(SIGUSR2, &ft_handler);

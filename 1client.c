@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 13:47:38 by guilmira          #+#    #+#             */
-/*   Updated: 2021/11/16 13:45:46 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/04/10 11:57:28 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,17 @@ static void	mt_parser(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		ft_putstr_fd("Invalid argument number.\
+		ft_shut("Invalid argument number.\
 		Introduce the PID follwed by the message.\
-		./client [PID] [string] \n", 2);
-		ft_shutdown();
+		./client [PID] [string] \n");
 	}
 	i = -1;
 	while (argv[1][++i])
 	{
 		if (!ft_isdigit(argv[1][i]))
 		{
-			ft_putstr_fd("PID must be a number. \
-			./client [PID] [string] \n", 2);
-			ft_shutdown();
+			ft_shut("PID must be a number. \
+			./client [PID] [string] \n");
 		}
 	}
 	if (!argv[2][0])
